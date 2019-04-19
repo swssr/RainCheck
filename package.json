@@ -21,5 +21,28 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "description": "Weather app built on ⚛ ReactJS pulling `OpenWeather` API.\r Contribute freely.",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swssr/pwa-raincheck.git"
+  },
+  "keywords": [
+    "raincheck",
+    "weather-app",
+    "weather",
+    "openweather-api",
+    "react",
+    "pwa",
+    "mobile",
+    "dribbble"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swssr/pwa-raincheck/issues"
+  },
+  "homepage": "https://github.com/swssr/pwa-raincheck#readme"
 }

@@ -1,14 +1,193 @@
-body {
+:root {
+  --padding: 24px;
+  --margin: calc(var(--padding) / 2);
+  --bg-dark: rgb(21, 67, 90);
+  --transparent: rgba(0, 0, 0, 0);
+  --bar-height: 126px;
+  /* --pill-width: calc((100vw - var(--padding)) / 6);  */
+  --max-container: 88vw;
+
+  --gray: rgb(115, 115, 115);
+  --white: rgb(249, 249, 249);
+}
+
+* {
+  /* box-sizing: border-box; */
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  color: var(--gray);
+}
+
+html {
+  font-size: 18px;
+  font-family: 'Noto Sans', Geneva, Tahoma, sans-serif;
+  width: 100vw;
+}
+
+body {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.bg{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  /* background-color: var(--bg-dark);
+  background-image: linear-gradient(to bottom,
+    var(--transparent),
+    rgba(0, 0, 0, 0.4)); */
+  background-color: var(--white);
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+}
+.app {
+  position: relative;
+  width: inherit;
+  max-width: inherit;
+  padding-top: 18px;
+  /* margin: var(--padding); */
+  display: grid;
+  grid-template-columns: var(--max-container);
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.bar {
+  height: var(--bar-height);
+}
+
+.bar--locations {
+  display: grid;
+  grid-template-columns: 1fr 16vw;
+  grid-auto-flow: dense;
+  grid-gap: var(--margin);
+}
+
+.indicators {
+  grid-column: span 2;
+  height: 16px;
+  margin-top: -16px;
+
+}
+.indicator{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  background-color: var(--gray);
+  opacity: .5;
+  border-radius: 50%;
+}
+.active{
+  opacity: 1 !important;
+}
+
+.details {
+  position: relative;
+  height: calc(100vh - var(--bar-height) * 2);
+  display: grid;
+  align-items: center;
+}
+
+.bar--hours {
+  /* Not using grid because I need oov hours to overflow, 
+  allowing user to swipe left to view more hours.
+  ##NB Indicate that It's slidable */
+  display: flex;
+  overflow-x: scroll;
+  scrollbar-width: 0px;
+  max-width: var(--max-container);
+}
+
+.hour--pill {
+  display: grid;
+  /* width: var(--pill-width); */
+  flex: 1;
+  height: inherit;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.summary {
+}
+
+.current {
+  width: min-content;
+  height: min-content;
+  transform: translateY(-50%);
+}
+/* Button and Links */
+.btn{
+  appearance: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: var(--gray);
+  fill: var(--gray);
+  font-size: 18px;
+  transform: translateY(-16%);
+  cursor: pointer;
+}
+/* Typography */
+
+.city__name,
+.temp,
+.degrees {
+  font-family: 'F37 Bella'
+}
+
+.city__name {
+  font-size: 48px;
+  text-transform: capitalize;
+}
+
+.city__state,
+.summary {
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.temp {
+  position: relative;
+  font-size: 80px;
+  width: min-content;
+}
+
+.temp::after,
+.temp_read::after {
+  content: '0';
+  font-size: 0.5em;
+  display: block;
+  position: absolute;
+  top: -0.2em;
+  right: calc(-0.75em);
+  z-index: 999;
+}
+
+.time {
+  font-size: 16px;
+}
+
+.icon {
+  --fsz: 32px;
+  font-size: var(--fsz);
+  line-height: var(--fsz);
+}
+
+.temp_read {
+  position: relative;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.temp_read::after {
+  right: -0.2em;
 }
